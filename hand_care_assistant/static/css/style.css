@@ -1,0 +1,60 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+.nav_pricipal{
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    height: 8%;
+}
+
+.titulo_pagina{
+    width: 20%;
+    margin-left: 2%;
+}
+
+.nav_botones{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 20%;
+}
+
+.nav-link{
+    margin: 5%;
+}
+
+
+
+.div_formulario{
+    display: block;
+    width: 30%;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.titulo_formulario{
+    display: flex;
+    justify-content: center;
+}
+
+.boton_formulario * {
+    width: 100%;
+}
+
+@media only screen and (max-width: 768px){
+    .div_formulario{
+        width: 90%;
+    }
+}

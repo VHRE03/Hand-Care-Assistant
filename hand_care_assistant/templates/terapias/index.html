@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block titulo %} Pacientes {% endblock %}
+
+{% block contenido %} 
+
+<br>
+
+<div>
+    <h1>Lista de terapias</h1>
+</div>
+
+<br>
+
+<div class="card">
+
+    <div class="card-header">
+        <div class="datos_paciente">
+            <h3>{{ paciente.nombre }} {{ paciente.apellido }}</h3>
+            <label for="exampleInputEmail1" class="form-label">Diagnostico medico: {{ paciente.diagnostico_medico }}</label>
+            <br>
+            <label for="exampleInputEmail1" class="form-label">Fecha de inicio de terapias: {{ paciente.fecha_inicio_terapia }}</label>
+            <br>
+            <label for="exampleInputEmail1" class="form-label">Plan de terapias: {{ paciente.plan_terapia }}</label>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-default">
+                <thead>
+                    <tr>
+                        <th scope="col">Fecha y hora de inicio</th>
+                        <th scope="col">Fecha y hora de termino</th>
+                        <th scope="col">Actividad realizada</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for terapias in terapia %}
+
+                    <tr class="">
+                        <td>{{ terapia.fehca_hora_inicio }}</td>
+                        <td>{{ paciente.fecha_hora_fin }}</td>
+                        <td>{{ paciente.actividad_realizada }}</td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+        
+
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+{% endblock %}

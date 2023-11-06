@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block titulo %} Pacientes {% endblock %}
+
+{% block contenido %} 
+
+<br>
+
+<div>
+    <h1>Lista de pacientes</h1>
+</div>
+
+<br>
+
+<div class="card">
+
+    <div class="card-header">
+        <a name="" id="" class="btn btn-primary" href="{% url 'nuevo' %}" role="button">Nuevo Paciente</a>
+
+        <div>
+            <form class="multipart/form-data" method = "post">
+
+                {% csrf_token %}
+
+                <div class="col">
+                    <div class="mb-3">
+                        <input type="text" name="nombre" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                    </div>
+                </div>
+
+                <input name="" id="" class="btn btn-primary" type="submit" value="Buscar">
+
+            </form>
+        </div>
+
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-default">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Diagnostico</th>
+                        <th scope="col">Fecha de inicio de terapias</th>
+                        <th scope="col">Plan de terapia</th>
+                        <th scope="col">Terapias</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for paciente in pacientes %}
+
+                    <tr class="">
+                        <td>{{ paciente.nombre}} {{paciente.apellido }}</td>
+                        <td>{{ paciente.telefono }}</td>
+                        <td>{{ paciente.diagnostico_medico }}</td>
+                        <td>{{ paciente.fecha_inicio_terapia | date:'d-m-Y' }}</td>
+                        <td>{{ paciente.plan_terapia }}</td>
+                        <td>
+                            <a name="" id="" class="btn btn-info" href="{% url 'terapias' paciente.id_paciente %}" role="button">Terapias</a>
+                        </td>
+                        <td> 
+                            <a name="" id="" class="btn btn-info" href="{% url 'editar' paciente.id_paciente %}" role="button">Editar</a> |  
+                            <a name="" id="" class="btn btn-danger" href="{% url 'eliminar' paciente.id_paciente %}" role="button">Borrar</a>
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+        
+
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+<form  enctype = "multipart/form-data" method = "post">
+
+  {% csrf_token %}
+
+  {% for campo in formulario %}
+
+    {% if campo.label == 'Id fisioterapeuta' %}
+      <input type="hidden" name="{{ campo.name }}" value= "{{ id_fisioterapeuta }}">
+    {% else %}
+      {% if campo.label == 'Paciente activo' %}
+        <input type="hidden" name="{{ campo.name }}" value= "{{ campo.value | default:'A'}}">
+      {% else %}
+        {% if campo.label == 'Fecha de nacimiento' or campo.label == 'Fecha de inicio de terapia' %}
+          <div class="mb-3">
+            <label for="" class="form-label">{{ campo.label }}</label>
+            <input
+            type="date"
+            class="form-control" 
+            name="{{ campo.name }}" 
+            id="" 
+            aria-describedby="helpId" 
+            placeholder="{{ campo.label }}"
+            value = "{{ campo.value | date:'Y-m-d' | default:'' }}"/>
+          </div>
+        {% else %}
+          <div class="mb-3">
+            <label for="" class="form-label">{{ campo.label }}</label>
+            <input
+            type="{{ campo.field.widget.input_type }}"
+            class="form-control" 
+            name="{{ campo.name }}" 
+            id="" 
+            aria-describedby="helpId" 
+            placeholder="{{ campo.label }}"
+            value="{{ campo.value | default:'' }}">
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+
+    <div class="col-12 help-text"> {{campo.errors}} </div>
+
+  {% endfor %}
+
+  <input name="" id="" class="btn btn-primary" type="submit" value="Guardar información">
+  <a name="" id="" class="btn btn-danger" href="{% url 'pacientes' %}" role="button">Cancelar</a>
+
+</form>

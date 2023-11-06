@@ -1,0 +1,38 @@
+
+{% extends "home.html" %}
+
+{% block titulo %} Pacientes {% endblock %}
+
+{% block contenido %} 
+
+<div class="div_formulario">
+
+  <h2 class="titulo_formulario">Iniciar sesión</h2>
+
+  <br>
+
+  <form action="" method="post">
+
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label for="" class="form-label">Nombre de usuario</label>
+      <input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario" aria-describedby="helpId" placeholder="">
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Contraseña</label>
+      <input type="password" class="form-control" name="password" id="password" placeholder="">
+    </div>
+
+    {{error}}
+
+    <br>
+
+    <div class="boton_formulario">
+      <input name="" id="" class="btn btn-primary" type="submit" value="Guardar información">
+    </div>
+  </form>
+</div>
+
+{% endblock %}
