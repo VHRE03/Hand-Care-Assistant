@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -48,13 +49,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'sistema.urls'
@@ -82,15 +83,13 @@ WSGI_APPLICATION = 'sistema.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'proyecto_vr',
-        'USER': 'admin',
-        'PASSWORD': 'PVRpvr123',
-        'PORT': '3306',
-        'HOST': 'proyectovr.c6jxn6lqsup8.us-east-1.rds.amazonaws.com'
-    }
+    'default': dj_database_url.config(
+        # Feel free to alter this value to suit your needs.
+        default='mysql://admin:PVRpvr123@proyectovr.c6jxn6lqsup8.us-east-1.rds.amazonaws.com:3306/proyecto_vr',
+        conn_max_age=600
+    )
 }
+
 
 
 # Password validation
@@ -127,7 +126,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/hand_care_assistant/static/'
+STATIC_URL = '/static/'
 
 if not DEBUG:
     # Tell Django to copy statics to the `staticfiles` directory
