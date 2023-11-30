@@ -1,21 +1,16 @@
-{% extends "base.html" %}
+{% extends "plantillas/base_2.html" %}
 
 {% block titulo %} Editar paciente {% endblock %}
 
 {% block contenido %} 
 
-<div class="card">
-    <div class="card-header">
-        Editar información del paciente
+<div class="div_formulario">
+    <div class="div_titulo_seccion">
+        <p>Editar paciente</p>
     </div>
-    <div class="card-body">
-        <h4 class="card-title">Datos del paciente</h4>
 
+    <div class="formulario" style="margin-top: 3%;">
         {% include 'pacientes/form.html' %}
-        
-    </div>
-    <div class="card-footer text-muted">
-        
     </div>
 </div>
 

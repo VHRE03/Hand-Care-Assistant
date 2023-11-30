@@ -2,47 +2,160 @@
 
   {% csrf_token %}
 
-  {% for campo in formulario %}
+  <div style="display: flex; display: flex; align-items: center; justify-content: space-between; ">
+    <div class="mb-3" style="width: 50%; padding-left: 1%; padding-right: 1%;">
+      <label for="" class="form-label">{{ formulario.nombre.label }}</label>
+      <input
+      type="{{ formulario.nombre.field.widget.input_type }}"
+      class="form-control" 
+      name="{{ formulario.nombre.name }}" 
+      id="" 
+      aria-describedby="helpId" 
+      placeholder="{{ formulario.nombre.label }}"
+      value="{{ formulario.nombre.value | default:'' }}">
+    </div>
 
-    {% if campo.label == 'Id fisioterapeuta' %}
-      <input type="hidden" name="{{ campo.name }}" value= "{{ id_fisioterapeuta }}">
-    {% else %}
-      {% if campo.label == 'Paciente activo' %}
-        <input type="hidden" name="{{ campo.name }}" value= "{{ campo.value | default:'A'}}">
+    <div class="mb-3" style="width: 50%; padding-left: 1%; padding-right: 1%;">
+      <label for="" class="form-label">{{ formulario.apellido.label }}</label>
+      <input
+      type="{{ formulario.apellido.field.widget.input_type }}"
+      class="form-control" 
+      name="{{ formulario.apellido.name }}" 
+      id="" 
+      aria-describedby="helpId" 
+      placeholder="{{ formulario.apellido.label }}"
+      value="{{ formulario.apellido.value | default:'' }}">
+    </div>
+
+    <div class="mb-3" style="width: 50%; padding-left: 1%; padding-right: 1%;">
+      <label for="" class="form-label">{{ formulario.fecha_nacimiento.label }}</label>
+      <input
+      type="date"
+      class="form-control" 
+      name="{{ formulario.fecha_nacimiento.name }}" 
+      id="" 
+      aria-describedby="helpId" 
+      placeholder="{{ formulario.fecha_nacimiento.label }}"
+      value = "{{ formulario.fecha_nacimiento.value | date:'Y-m-d' | default:'' }}"/>
+    </div>
+
+    <div class="mb-3" style="width: 50%; padding-left: 1%; padding-right: 1%;">
+      <label for="" class="form-label">{{ formulario.sexo.label }}</label>
+      {% if formulario.sexo.value == 'Masculino' %}
+        <select class="form-select" aria-label="Default select example" name="{{ formulario.sexo.name }}" >
+          <option selected>{{ formulario.sexo.value }}</option>
+          <option value="Femenino">Femenino</option>
+          <option value="Otro">Otro</option>
+        </select>
       {% else %}
-        {% if campo.label == 'Fecha de nacimiento' or campo.label == 'Fecha de inicio de terapia' %}
-          <div class="mb-3">
-            <label for="" class="form-label">{{ campo.label }}</label>
-            <input
-            type="date"
-            class="form-control" 
-            name="{{ campo.name }}" 
-            id="" 
-            aria-describedby="helpId" 
-            placeholder="{{ campo.label }}"
-            value = "{{ campo.value | date:'Y-m-d' | default:'' }}"/>
-          </div>
+        {% if formulario.sexo.value == 'Femenino' %}
+          <select class="form-select" aria-label="Default select example" name="{{ formulario.sexo.name }}" >
+            <option selected>{{ formulario.sexo.value }}</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Otro">Otro</option>
+          </select>
         {% else %}
-          <div class="mb-3">
-            <label for="" class="form-label">{{ campo.label }}</label>
-            <input
-            type="{{ campo.field.widget.input_type }}"
-            class="form-control" 
-            name="{{ campo.name }}" 
-            id="" 
-            aria-describedby="helpId" 
-            placeholder="{{ campo.label }}"
-            value="{{ campo.value | default:'' }}">
-          </div>
+            {% if formulario.sexo.value == 'Otro' %}
+              <select class="form-select" aria-label="Default select example" name="{{ formulario.sexo.name }}" >
+                <option selected>{{ formulario.sexo.value }}</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+              </select>
+            {% else %}
+              <select class="form-select" aria-label="Default select example" name="{{ formulario.sexo.name }}" >
+                <option selected>Selecciona una opción</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Otro">Otro</option>
+              </select>
+            {% endif %}
         {% endif %}
       {% endif %}
-    {% endif %}
+    </div>
+  </div>
 
-    <div class="col-12 help-text"> {{campo.errors}} </div>
+  <div style="display: flex; display: flex; align-items: center; justify-content: space-between; ">
+    <div class="mb-3" style="width: 50%; padding-left: 1%; padding-right: 1%;">
+      <label for="" class="form-label">{{ formulario.correo.label }}</label>
+      <input
+      type="{{ formulario.correo.field.widget.input_type }}"
+      class="form-control" 
+      name="{{ formulario.correo.name }}" 
+      id="" 
+      aria-describedby="helpId" 
+      placeholder="{{ formulario.correo.label }}"
+      value="{{ formulario.correo.value | default:'' }}">
+    </div>
 
-  {% endfor %}
+    <div class="mb-3" style="width: 50%; padding-left: 1%; padding-right: 1%;">
+      <label for="" class="form-label">{{ formulario.telefono.label }}</label>
+      <input
+      type="{{ formulario.telefono.field.widget.input_type }}"
+      class="form-control" 
+      name="{{ formulario.telefono.name }}" 
+      id="" 
+      aria-describedby="helpId" 
+      placeholder="{{ formulario.telefono.label }}"
+      value="{{ formulario.telefono.value | default:'' }}">
+    </div>
+  </div>
 
-  <input name="" id="" class="btn btn-primary" type="submit" value="Guardar información">
-  <a name="" id="" class="btn btn-danger" href="{% url 'pacientes' %}" role="button">Cancelar</a>
+  <div style="display: flex; display: flex; align-items: center; justify-content: space-between; ">
+    <div class="mb-3" style="width: 100%; padding-left: 1%; padding-right: 1%;">
+      <label for="" class="form-label">{{ formulario.direccion.label }}</label>
+      <input
+      type="{{ formulario.direccion.field.widget.input_type }}"
+      class="form-control" 
+      name="{{ formulario.direccion.name }}" 
+      id="" 
+      aria-describedby="helpId" 
+      placeholder="{{ formulario.direccion.label }}"
+      value="{{ formulario.direccion.value | default:'' }}">
+    </div>
+  </div>
 
+  <div style="display: flex; display: flex; align-items: center; justify-content: space-between; ">
+    <div class="mb-3" style="width: 100%; padding-left: 1%; padding-right: 1%;">
+      <label for="" class="form-label">{{ formulario.diagnostico_medico.label }}</label>
+      <input
+      type="{{ formulario.diagnostico_medico.field.widget.input_type }}"
+      class="form-control" 
+      name="{{ formulario.diagnostico_medico.name }}" 
+      id="" 
+      aria-describedby="helpId" 
+      placeholder="{{ formulario.diagnostico_medico.label }}"
+      value="{{ formulario.diagnostico_medico.value | default:'' }}">
+    </div>
+  </div>
+
+  <div style="display: flex; display: flex; align-items: center; justify-content: space-between; ">
+    <div class="mb-3" style="width: 50%; padding-left: 1%; padding-right: 1%;">
+      <label for="" class="form-label">{{ formulario.fecha_inicio_terapia.label }}</label>
+      <input
+        type="date"
+        class="form-control" 
+        name="{{ formulario.fecha_inicio_terapia.name }}" 
+        id="" 
+        aria-describedby="helpId" 
+        placeholder="{{ formulario.fecha_inicio_terapia.label }}"
+        value = "{{ formulario.fecha_inicio_terapia.value | date:'Y-m-d' | default:'' }}"/>
+    </div>
+
+    <div class="mb-3" style="width: 50%; padding-left: 1%; padding-right: 1%;">
+      <label for="" class="form-label">{{ formulario.plan_terapia.label }}</label>
+      <input
+      type="{{ formulario.plan_terapia.field.widget.input_type }}"
+      class="form-control" 
+      name="{{ formulario.plan_terapia.name }}" 
+      id="" 
+      aria-describedby="helpId" 
+      placeholder="{{ formulario.plan_terapia.label }}"
+      value="{{ formulario.plan_terapia.value | default:'' }}">
+    </div>
+  </div>
+
+  <div style="width: 100%; display: flex; display: flex; align-items: center; justify-content: space-between; padding-left: 1%; padding-right: 1%; margin-top: 2%;">
+    <input style="width: 15%;" name="" id="" class="btn btn-primary" type="submit" value="Guardar información">
+    <a style="width: 15%;" name="" id="" class="btn btn-danger" href="{% url 'pacientes' %}" role="button">Cancelar</a>
+  </div>
 </form>

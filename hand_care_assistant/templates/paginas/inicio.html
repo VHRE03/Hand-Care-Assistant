@@ -1,31 +1,184 @@
 
-{% extends "base.html" %}
+{% extends "plantillas/base_2.html" %}
+
+{% load static %}
 
 {% block titulo %} Inicio {% endblock %}
 
 {% block contenido %} 
 
-<div class="row align-items-md-stretch">
-    <div class="col-md-6">
-        <div
-            class="h-100 p-5 text-white bg-primary border rounded-3">
-            <h2>Change the background</h2>
-            <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then,
-                mix and match with additional component themes and more.</p>
-            <button class="btn btn-outline-primary" type="button">Example button</button>
+<div style="width: 100%;">
+    <!--Graficas-->
+    <!--Titulo de seccion-->
+    <div id="div_titulo_graficas">
+        <h2>Información General</h2>
+    </div>
+
+    <!--Datos generales-->
+    <div id="div_datos_generales">
+        <div class="datos_generales">
+            <p class="titulo_datos_generales">Número total de pacientes</p>
+            <p class="valor_datos_generales">{{ datos_generales_1 }}</p>
+        </div>
+
+        <div class="datos_generales">
+            <p class="titulo_datos_generales">Edad promedio</p>
+            <p class="valor_datos_generales">{{ datos_generales_1 }}</p>
+        </div>
+        
+        <div class="datos_generales">
+            <p class="titulo_datos_generales">Edad promedio</p>
+            <p class="valor_datos_generales">{{ datos_generales_1 }}</p>
+        </div>
+
+        <div class="datos_generales">
+            <p class="titulo_datos_generales">Promedio de terapias (semana)</p>
+            <p class="valor_datos_generales">{{ datos_generales_5 }}</p>
+        </div>
+
+        <div class="datos_generales">
+            <p class="titulo_datos_generales">Promedio de terapias (mes)</p>
+            <p class="valor_datos_generales">{{ datos_generales_1 }}</p>
         </div>
     </div>
-    <div class="col-md-6">
-        <div
-            class="h-100 p-5 bg-primary border rounded-3">
-            <h2>Add borders</h2>
-            <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure
-                to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both
-                column's content for equal-height.</p>
-            <button class="btn Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then,
-                mix and match with additional component themes and more." type="button">Example button</button>
+
+    <!--Primera seccion de graficas-->
+    <div class="div_graficas">
+        <div class="grafica">
+            <p>Edad de los pacientes</p>
+            <canvas id="grafica_1"></canvas>
         </div>
+
+        <div class="grafica">
+            <p>Genero de los pacientes</p>
+            <canvas id="grafica_2"></canvas>
+        </div> 
+    </div>
+
+    <!--Segunda seccion de graficas-->
+    <div class="div_graficas">
+        <div class="grafica">
+            <p>Frecuencia de sesiones por mes</p>
+            <canvas id="grafica_3"></canvas>
+        </div>
+
+        <div class="grafica">
+            <p>Frecuencia de sesiones por semana</p>
+            <canvas id="grafica_4"></canvas>
+        </div> 
     </div>
 </div>
+
+<!--Instrucciones y recomendaciones-->
+
+<!--Graficas-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const grafica_1 = document.getElementById('grafica_1');
+    
+    new Chart(grafica_1, {
+        type: 'bar',
+        data: {
+        labels: ['0-9', '10-19', '20-29', '30-39', '40-39', '50-59', '60-69', '70+'],
+        datasets: [{
+            label: 'Frecuencia de edades',
+            data: {{datos_grafica_1}},
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 205, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(201, 203, 207, 0.2)',
+            'rgba(200, 102, 255, 0.2)',
+            ],
+            borderWidth: 1
+        }]
+        },
+        options: {
+        scales: {
+            y: {
+            beginAtZero: true
+            }
+        }
+        }
+    });
+</script>
+
+<script>
+    const grafica_2 = document.getElementById('grafica_2');
+    
+    new Chart(grafica_2, {
+        type: 'bar',
+        data: {
+        labels: ['Masculino', 'Femenino', 'Otro'],
+        datasets: [{
+            label: '# of Votes',
+            data: {{datos_grafica_2}},
+            backgroundColor: [
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(255, 205, 86, 0.2)',
+            ],
+            borderWidth: 1
+        }]
+        },
+        options: {
+        scales: {
+            y: {
+            beginAtZero: true
+            }
+        }
+        }
+    });
+</script>
+
+<script>
+    const grafica_3 = document.getElementById('grafica_3');
+    
+    new Chart(grafica_3, {
+        type: 'line',
+        data: {
+        labels: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'],
+        datasets: [{
+            label: '# of Votes',
+            data: {{datos_grafica_3}},
+            borderColor: 'rgb(75, 192, 192)',
+            borderWidth: 1
+        }]
+        },
+        options: {
+        scales: {
+            y: {
+            beginAtZero: true
+            }
+        }
+        }
+    });
+</script>
+
+<script>
+    const grafica_4 = document.getElementById('grafica_4');
+    
+    new Chart(grafica_4, {
+        type: 'line',
+        data: {
+        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio,', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        datasets: [{
+            label: '# of Votes',
+            data: {{datos_grafica_4}},
+            borderWidth: 1
+        }]
+        },
+        options: {
+        scales: {
+            y: {
+            beginAtZero: true
+            }
+        }
+        }
+    });
+</script>
 
 {% endblock %}

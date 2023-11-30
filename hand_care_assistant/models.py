@@ -18,6 +18,7 @@ class Paciente(models.Model):
     nombre = models.CharField(max_length=50, blank=True, null=True, verbose_name = 'Nombre')
     apellido = models.CharField(max_length=50, blank=True, null=True, verbose_name = 'Apellido')
     fecha_nacimiento = models.DateField(blank=True, null=True, verbose_name = 'Fecha de nacimiento')
+    sexo = models.CharField(max_length=10, blank=True, null=True)
     correo = models.CharField(max_length=100, blank=True, null=True, verbose_name = 'Correo electrónico')
     telefono = models.CharField(max_length=10, blank=True, null=True, verbose_name = 'Número telefónico')
     direccion = models.CharField(max_length=200, blank=True, null=True, verbose_name = 'Dirección')
@@ -29,6 +30,6 @@ class Paciente(models.Model):
 class Terapia(models.Model):
     id_terapia = models.AutoField(primary_key=True)
     id_paciente = models.ForeignKey(Paciente, models.DO_NOTHING, db_column='id_paciente', blank=True, null=True)
-    fecha_hora_inicio = models.DateTimeField(blank=True, null=True)
-    fecha_hora_fin = models.DateTimeField(blank=True, null=True)
+    fecha_hora_inicio = models.DateField(blank=True, null=True)
+    fecha_hora_fin = models.DateField(blank=True, null=True)
     actividad_realizada = models.CharField(max_length=100, blank=True, null=True)

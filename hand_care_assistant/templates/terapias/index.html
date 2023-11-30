@@ -1,32 +1,24 @@
-{% extends "base.html" %}
+{% extends "plantillas/base_2.html" %}
 
 {% block titulo %} Pacientes {% endblock %}
 
 {% block contenido %} 
 
-<br>
-
-<div>
-    <h1>Lista de terapias</h1>
-</div>
-
-<br>
-
-<div class="card">
-
-    <div class="card-header">
-        <div class="datos_paciente">
-            <h3>{{ paciente.nombre }} {{ paciente.apellido }}</h3>
-            <label for="exampleInputEmail1" class="form-label">Diagnostico medico: {{ paciente.diagnostico_medico }}</label>
-            <br>
-            <label for="exampleInputEmail1" class="form-label">Fecha de inicio de terapias: {{ paciente.fecha_inicio_terapia }}</label>
-            <br>
-            <label for="exampleInputEmail1" class="form-label">Plan de terapias: {{ paciente.plan_terapia }}</label>
+<div class="div_tablas_formularios">
+    <div class="div_tabla">
+        <div class="div_titulo_seccion">
+            <p>Lista de terapias</p>
         </div>
-    </div>
 
-    <div class="card-body">
-        <div class="table-responsive">
+        <div style="margin: 2%;">
+            <p style="font-size: x-large;">Datos del paciente</p>
+            <p style="font-size: large;">Nombre: {{ paciente.nombre }} {{ paciente.apellido }}</p>
+            <p style="font-size: large;">Diagnostico medico: {{ paciente.diagnostico_medico }}</p>
+            <p style="font-size: large;">Fecha de inicio de terapias: {{ paciente.fecha_inicio_terapia }}</p>
+            <p style="font-size: large;">Plan de terapias: {{ paciente.plan_terapia }}</p>
+        </div>
+
+        <div class="tabla">
             <table class="table table-default">
                 <thead>
                     <tr>
@@ -37,12 +29,12 @@
                 </thead>
                 <tbody>
 
-                    {% for terapias in terapia %}
+                    {% for terapia in terapias %}
 
                     <tr class="">
-                        <td>{{ terapia.fehca_hora_inicio }}</td>
-                        <td>{{ paciente.fecha_hora_fin }}</td>
-                        <td>{{ paciente.actividad_realizada }}</td>
+                        <td>{{ terapia.fecha_hora_inicio | date:'d-m-Y' }}</td>
+                        <td>{{ terapia.fecha_hora_fin | date:'d-m-Y'  }}</td>
+                        <td>{{ terapia.actividad_realizada }}</td>
                     </tr>
 
                     {% endfor %}
@@ -50,11 +42,6 @@
                 </tbody>
             </table>
         </div>
-        
-
-    </div>
-    <div class="card-footer text-muted">
-        
     </div>
 </div>
 

@@ -1,55 +1,82 @@
+
+{% extends "plantillas/base_1.html" %}
+
 {% load static %}
 
-<!doctype html>
-<html lang="en">
+{% block titulo %} Hand Care Assistant {% endblock %}
 
-<head>
-  <title>Hand Motion Care Assistant</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% block contenido %} 
 
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<div id="div_pagina_principal_seccion_1">
 
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <div id="div_info_pagina_principal_seccion_1">
 
-</head>
+    <div id="div_contenedor_info_pagina_principal_seccion_1">
 
-<body>
+      <div id="div_titulo_pagina_principal_seccion_1">
+        <p>A Bootstrap 5 template for modern businesses</p>
+      </div>
+  
+      <div id="div_descripcion_pagina_principal_seccion_1">
+        <p>Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit!</p>
+      </div>
+  
+      <div id="div_botones_descripcion_pagina_principal_seccion_1">
+        <button id="boton_pagina_principal_seccion_1" class="btn btn-primary" type="submit">Get Started</button>
+        <button id="boton_pagina_principal_seccion_1" type="button" class="btn btn-outline-light">Learn More</button>  
+      </div>
+    </div>
+  </div>
+  
+  <div id="div_imagen_pagina_principal_seccion_1">
+    <img id="imagen_1" src="{% static 'imagenes/imagen_3.png' %}" class="img-fluid" alt="...">
+  </div>
+</div>
 
-    <nav class="nav_pricipal">
-        <div class="titulo_pagina">
-            <a class="navbar-brand" href="#">Hand Care Assistant</a>
-        </div>
-        <div class="nav_botones">
-            <a class="nav-link" href="#" aria-current="page">Registrarse</a>
-            <a class="nav-link" href="{% url 'iniciar_sesion' %}">Iniciar sesion</a>
-        </div>      
-    </nav>
+<div>
+  <div id="div_tiulo_seccion_4">
+    <div>
+      <h3>Seccion 4</h3>
+      <p>Descripcion seccion 4</p>
+    </div>
+  </div>
 
-    <div class="div-contenido">
-        {% block contenido %}  {% endblock %}
+  <div id="div_pagina_principal_seccion_4">
+
+    <div id="card_pagina_principal_seccion_4">
+      <div id="div_imagen_card_pagina_principal_seccion_4">
+        <img id="imagen_card_pagina_principal_seccion_4" src="{% static 'imagenes/imagen_2.png' %}">
+      </div>
+
+      <div id="texto_card_pagina_principal_seccion_4">
+        <h6>Titulo</h6>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque fugit ratione dicta mollitia. Officiis ad.</p>
+      </div>
     </div>
 
-  <header>
-    <!-- place navbar here -->
-  </header>
-  <main>
+    <div id="card_pagina_principal_seccion_4">
+      <div id="div_imagen_card_pagina_principal_seccion_4">
+        <img id="imagen_card_pagina_principal_seccion_4" src="{% static 'imagenes/imagen_3.png' %}">
+      </div>
 
-  </main>
-  <footer>
-    <!-- place footer here -->
-  </footer>
-  <!-- Bootstrap JavaScript Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-  </script>
+      <div id="texto_card_pagina_principal_seccion_4">
+        <h6>Titulo</h6>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque fugit ratione dicta mollitia. Officiis ad.</p>
+      </div>
+    </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-  </script>
-</body>
+    <div id="card_pagina_principal_seccion_4">
+      <div id="div_imagen_card_pagina_principal_seccion_4">
+        <img id="imagen_card_pagina_principal_seccion_4" src="{% static 'imagenes/imagen_4.jpg' %}">
+      </div>
 
-</html>
+      <div id="texto_card_pagina_principal_seccion_4">
+        <h6>Titulo</h6>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque fugit ratione dicta mollitia. Officiis ad.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

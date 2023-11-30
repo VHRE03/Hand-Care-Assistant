@@ -1,38 +1,54 @@
+{% extends "plantillas/base_1.html" %}
 
-{% extends "home.html" %}
+{% load static %}
 
-{% block titulo %} Pacientes {% endblock %}
+{% block titulo %} Iniciar Sesion {% endblock %}
 
-{% block contenido %} 
+{% block contenido %}
 
-<div class="div_formulario">
+<main id="main_ingresar_registrar">
+  <div id="div_ingresar_registrar">
+      <div id="div_ingresar_registrar_formulario">
+        <div class="div_formulario">
 
-  <h2 class="titulo_formulario">Iniciar sesión</h2>
+          <h2 class="titulo_formulario">Iniciar sesión</h2>
+        
+          <br><br><br>
+        
+          <form action="" method="post">
+        
+            {% csrf_token %}
+        
+            <div class="mb-3">
+              <label for="" class="form-label">Nombre de usuario</label>
+              <input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario" aria-describedby="helpId" placeholder="">
+            </div>
+        
+            <div class="mb-3">
+              <label for="" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" name="password" id="password" placeholder="">
+            </div>
+        
+            {{error}}
+        
+            <br>
+        
+            <div class="boton_formulario">
+              <input name="" id="" class="btn btn-primary" type="submit" value="Ingresar">
+            </div>
+          </form>
+        </div>
+        
+        <div id="div_boton_registrar">
+          <p>No tienes una cuenta? &nbsp;</p>
+          <a name="" id="" class="" href="#" role="button">Registrate aquí</a>
+        </div>
+      </div>
 
-  <br>
-
-  <form action="" method="post">
-
-    {% csrf_token %}
-
-    <div class="mb-3">
-      <label for="" class="form-label">Nombre de usuario</label>
-      <input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario" aria-describedby="helpId" placeholder="">
-    </div>
-
-    <div class="mb-3">
-      <label for="" class="form-label">Contraseña</label>
-      <input type="password" class="form-control" name="password" id="password" placeholder="">
-    </div>
-
-    {{error}}
-
-    <br>
-
-    <div class="boton_formulario">
-      <input name="" id="" class="btn btn-primary" type="submit" value="Guardar información">
-    </div>
-  </form>
-</div>
+      <div id="div_ingresar_registrar_imagen">
+          <img id="imagen_ingresar_registrar" src="{% static 'imagenes/imagen_ingresar_registrar.jpg' %}" class="" alt="">
+      </div>
+  </div>
+</main>
 
 {% endblock %}
